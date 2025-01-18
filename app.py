@@ -4,6 +4,11 @@ from flask_mail import Message,Mail
 
 # Flask App Initialization
 app = Flask(__name__)
+
+@app.route('/index')
+def homepage():
+    return render_template('index.html')  # Your HTML file name
+
 app.secret_key = "22852255"  # Required for session management
 
 
@@ -18,9 +23,6 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
-@app.route('/index')
-def homepage():
-    return render_template('index.html')  # Your HTML file name
 
 @app.route('/features')
 def features():
